@@ -1,12 +1,16 @@
 {
   "name": "@babidi/pix",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "A library to process images and extract dominant color and palette",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "node dist/index.js",
-    "build": "npx ncp src dist && copy README.md dist && copy LICENSE dist "
+    "build": "tsc --build  --clean && tsc && npm run copy",
+    "copy": "ncp src/lib dist/lib"
   },
   "keywords": [
     "image",
@@ -22,14 +26,6 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
-  "dependencies": {
-    "@jsquash/webp": "^1.4.0",
-    "fast-png": "^6.2.0",
-    "file-type": "^19.0.0",
-    "jpeg-js": "^0.4.4",
-    "node-fetch": "^3.3.2"
-  },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/valentin-marquez/pix.git"
@@ -37,5 +33,6 @@
   "bugs": {
     "url": "https://github.com/valentin-marquez/pix/issues"
   },
-  "homepage": "https://github.com/valentin-marquez/pix#readme"
+  "homepage": "https://github.com/valentin-marquez/pix#readme",
+  "type": "module"
 }

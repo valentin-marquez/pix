@@ -22,16 +22,12 @@ Here's an example of how you can use `@babidi/pix` to extract the predominant co
 
 ```javascript
 import Pix from '@babidi/pix';
+import * as fs from 'fs';
 
-(async () => {
-  const image = new Pix();
-  await image.create('path_to_your_image.jpg'); // Replace 'path_to_your_image.jpg' with the path to your image file
-  const predominantColor = await image.getPredominantColor(5);
-  const palette = await image.getPalette(10, 10);
-  
-  console.log('Predominant Color:', image.toHex(predominantColor));
-  console.log('Palette:', palette.map(color => image.toHex(color)));
-})();
+const imageBuffer = fs.promises.readFile('path_to_your_image.jpg');
+const image = new Pix(imageBuffer, Pix.Format.JPG);
+console.log('Dominant Color:', image.dominantHex); // Dominant color in hexadecimal format
+console.log('Palette:', image.paletteHex); // Array of colors in hexadecimal format
 ```
 
 Replace `'path_to_your_image.jpg'` with the path to the image file you want to process.
@@ -40,53 +36,37 @@ Replace `'path_to_your_image.jpg'` with the path to the image file you want to p
 
 ### `Pix`
 
-#### `create(img: string | Buffer): Promise<Pix>`
+#### Constructor
 
-Creates a new `Pix` object with the provided image data.
+```typescript
+new Pix(buffer: Buffer, filetype: Pix.Format): Pix
+```
 
-#### `isValidUrl(url: string): boolean`
+Creates a new `Pix` object with the provided image data and file format.
 
-Checks if a given URL is valid.
+#### Properties
 
-#### `isValidPath(path: string): boolean`
+- `dominant`: Color
+  - The dominant color of the image.
+- `dominantHex`: string
+  - The dominant color of the image in hexadecimal format.
+- `palette`: Color[]
+  - The color palette of the image.
+- `paletteHex`: string[]
+  - The color palette of the image in hexadecimal format.
 
-Checks if the given path is valid.
+### Enums
 
-#### `fromPath(path: string): Promise<Buffer>`
+#### `Pix.Format`
 
-Reads the contents of a file from the specified path and returns it as a Buffer.
+An enum representing supported image formats:
 
-#### `parseImage(img: Buffer | string): Promise<ImageData>`
-
-Parses an image and returns its image data.
-
-#### `decodeJPEG(data: Buffer): Promise<ImageData>`
-
-Decodes a JPEG image from the given buffer and returns the decoded image data.
-
-#### `decodePNG(data: Buffer): Promise<ImageData>`
-
-Decodes a PNG image from the given buffer and returns the image data.
-
-#### `fromUrl(url: string): Promise<Buffer>`
-
-Fetches an image from the specified URL and returns it as a Buffer.
-
-#### `getPixels(): Promise<number[][][]>`
-
-Retrieves the pixels of the image as a 3-dimensional array.
-
-#### `getPredominantColor(q: number): Promise<number[]>`
-
-Retrieves the predominant color of an image.
-
-#### `getPalette(count?: number, q?: number): Promise<number[][]>`
-
-Retrieves the color palette of the image.
-
-#### `toHex(color: number[]): string`
-
-Converts an array of RGB color values to a hexadecimal color representation.
+- `JPEG`
+- `JPG`
+- `PNG`
+- `GIF`
+- `BMP`
+- `WEBP`
 
 ## License
 
