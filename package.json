@@ -24,6 +24,7 @@
     "esm": "^3.2.25",
     "ncp": "^2.0.0",
     "ts-node": "^10.9.2",
+    "typedoc": "^0.25.8",
     "typescript": "^5.3.3"
   },
   "repository": {

@@ -26,11 +26,24 @@ import * as fs from 'fs';
 
 const imageBuffer = fs.promises.readFile('path_to_your_image.jpg');
 const image = new Pix(imageBuffer, Pix.Format.JPG);
-console.log('Dominant Color:', image.dominantHex); // Dominant color in hexadecimal format
-console.log('Palette:', image.paletteHex); // Array of colors in hexadecimal format
+console.log('Dominant Color:', image.dominant.toHex()); // Dominant color in hexadecimal format
+console.log('Palette:', image.palette.toHex()); // Array of colors in hexadecimal format
 ```
 
 Replace `'path_to_your_image.jpg'` with the path to the image file you want to process.
+
+## Benchmark
+
+A benchmark was conducted comparing the performance of `@babidi/pix` with another popular library called ColorThief in extracting the dominant color and color palette from different types of image files. Times are shown in milliseconds (ms).
+
+| File Type | Pix (ms) | ColorThief (ms) |
+|-----------|----------|-----------------|
+| PNG       | 274      | 2325            |
+| JPEG      | 309      | 3781            |
+| GIF       | 262      | 237             |
+| BMP       | 122      | No Supported    |
+| WEBP      | 726      | No Supported    |
+
 
 ## API Documentation
 

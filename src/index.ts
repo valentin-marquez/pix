@@ -1,7 +1,9 @@
 import { png, webp, gif, jpg, bmp } from "./lib/addon.js"
 
+/**
+ * Represents the supported image formats.
+ */
 export enum Format {
-    JPEG,
     JPG,
     PNG,
     GIF,
@@ -9,53 +11,101 @@ export enum Format {
     WEBP
 }
 
+/**
+ * Represents a color in the palette.
+ */
 type PaletteColor = [number, number, number];
+
+/**
+ * Represents a palette of colors.
+ */
 type TPalette = PaletteColor[];
+
+/**
+ * Represents the output of a process.
+ */
 type Output = {
     palette: TPalette
 }
 
+/**
+ * Represents a color with red, green, and blue components.
+ */
 class Color {
     r: number
     g: number
     b: number
 
+    /**
+     * Converts the color to its hexadecimal representation.
+     * @returns The hexadecimal color code.
+     */
     toHex(): string {
         return `#${this.r.toString(16).padStart(2, '0')}${this.g.toString(16).padStart(2, '0')}${this.b.toString(16).padStart(2, '0')}`
     }
 }
 
+/**
+ * Represents a palette of colors.
+ */
 class Palette {
-    colors: Color[]
+    colors: Color[];
 
+    /**
+     * Creates a new Palette instance.
+     * @param colors - The colors in the palette.
+     */
     constructor(colors: Color[]) {
         this.colors = colors;
     }
 
+    /**
+     * Converts the colors in the palette to their hexadecimal representation.
+     * @returns An array of strings representing the hexadecimal values of the colors.
+     */
     toHex(): string[] {
         return this.colors.map(color => color.toHex());
     }
 }
 
+/**
+ * Represents a dominant color.
+ */
 class Dominant {
     color: Color
 
+    /**
+     * Creates a new Dominant instance.
+     * @param color - The dominant color.
+     */
     constructor(color: Color) {
         this.color = color;
     }
 
+    /**
+     * Converts the dominant color to its hexadecimal representation.
+     * @returns The hexadecimal color code.
+     */
     toHex(): string {
         return this.color.toHex();
     }
 }
 
+/**
+ * Represents a Pix object that extracts color information from an image buffer.
+ */
 class Pix {
     static Format = Format
     public palette: Palette
     dominant: Dominant
 
-
-    constructor(buffer: Buffer, filetype: any) {
+    /**
+     * Creates a new Pix instance.
+     * @param buffer - The image buffer.
+     * @param filetype - The file format of the image.
+     * @throws Error if the buffer is empty or the filetype is unsupported.
+     */
+    constructor(buffer: Buffer, filetype: Format.JPG | Format.PNG | Format.GIF | Format.BMP | Format.WEBP) {
 
         if (!buffer || buffer.length === 0) {
             throw new Error("Buffer is empty")
@@ -63,25 +113,25 @@ class Pix {
         if (!filetype) {
             throw new Error("Filetype is empty")
         }
-        // output = { palette: [ [ 204, 226, 185 ], [ 44, 118, 200 ], [ 238, 50, 109 ] ] }
+
         let output: Output;
         switch (filetype) {
-            case Format.PNG:
-                output = png(buffer, 1, 5)
-                break
-            case Format.WEBP:
-                output = webp(buffer, 1, 5)
-                break
-            case Format.GIF:
-                output = gif(buffer, 1, 5)
-                break
+            // @ts-ignore
             case Format.JPG:
-            case Format.JPEG:
-                output = jpg(buffer, 1, 5)
-                break
+                output = jpg(buffer);
+                break;
+            case Format.PNG:
+                output = png(buffer);
+                break;
+            case Format.GIF:
+                output = gif(buffer);
+                break;
             case Format.BMP:
-                output = bmp(buffer, 1, 5)
-                break
+                output = bmp(buffer);
+                break;
+            case Format.WEBP:
+                output = webp(buffer);
+                break;
             default:
                 throw new Error("Unsupported file format")
         }
