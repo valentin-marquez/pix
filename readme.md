@@ -44,43 +44,6 @@ A benchmark was conducted comparing the performance of `@babidi/pix` with anothe
 | BMP       | 122      | No Supported    |
 | WEBP      | 726      | No Supported    |
 
-
-## API Documentation
-
-### `Pix`
-
-#### Constructor
-
-```typescript
-new Pix(buffer: Buffer, filetype: Pix.Format): Pix
-```
-
-Creates a new `Pix` object with the provided image data and file format.
-
-#### Properties
-
-- `dominant`: Color
-  - The dominant color of the image.
-- `dominantHex`: string
-  - The dominant color of the image in hexadecimal format.
-- `palette`: Color[]
-  - The color palette of the image.
-- `paletteHex`: string[]
-  - The color palette of the image in hexadecimal format.
-
-### Enums
-
-#### `Pix.Format`
-
-An enum representing supported image formats:
-
-- `JPEG`
-- `JPG`
-- `PNG`
-- `GIF`
-- `BMP`
-- `WEBP`
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
