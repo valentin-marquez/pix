@@ -26,8 +26,8 @@ import * as fs from 'fs';
 
 const imageBuffer = fs.promises.readFile('path_to_your_image.jpg');
 const image = new Pix(imageBuffer, Pix.Format.JPG);
-console.log('Dominant Color:', image.dominant.toHex()); // Dominant color in hexadecimal format
-console.log('Palette:', image.palette.toHex()); // Array of colors in hexadecimal format
+console.log('Dominant Color:', image.dominant.toHex());
+console.log('Palette:', image.palette.toHex());
 ```
 
 Replace `'path_to_your_image.jpg'` with the path to the image file you want to process.

@@ -1,5 +1,12 @@
 {
     "editor.formatOnSave": true,
+    "eslint.validate": [
+        "javascript",
+        "typescript",
+    ],
+    "eslint.run": "onSave",
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "all",
     "json.schemas": [
         {
             "url": "https://cdn.jsdelivr.net/npm/tsup/schema.json",
@@ -8,5 +15,8 @@
                 "tsup.config.json"
             ]
         }
-    ]
+    ],
+    "[typescript]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    }
 }
