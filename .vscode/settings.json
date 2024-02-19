@@ -2,7 +2,7 @@
     "editor.formatOnSave": true,
     "eslint.validate": [
         "javascript",
-        "typescript",
+        "typescript"
     ],
     "eslint.run": "onSave",
     "prettier.singleQuote": true,
