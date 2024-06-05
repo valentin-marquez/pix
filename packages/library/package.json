@@ -42,10 +42,12 @@
     "addon.node",
     "*.js",
     "*.d.ts",
-    "README.md"
+    "README.md",
+    "license"
   ],
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
-  }
+  },
+  "gitHead": "0a579046f09dfc1115f929de10ae924d8b0d3463"
 }
