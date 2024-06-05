@@ -1,6 +1,7 @@
 {
-    "editor.formatOnSave": true,
-    "[typescript]": {
-        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-    }
+  "files.autoSave": "afterDelay",
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

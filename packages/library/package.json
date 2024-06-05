@@ -1,0 +1,51 @@
+{
+  "name": "@nozz/pix",
+  "version": "1.1.0",
+  "description": "A library to process images and extract dominant color and palette",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "clean": "npx rimraf dist",
+    "build": "npm run clean && rollup -c",
+    "test": "jest"
+  },
+  "keywords": [
+    "image",
+    "processing",
+    "color",
+    "palette",
+    "rust",
+    "node.js"
+  ],
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "rollup": "^4.18.0",
+    "typescript": "^5.4.5"
+  },
+  "author": {
+    "name": "Valentin Marquez",
+    "email": "valentin@nozz.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valentin-marquez/pix.git"
+  },
+  "bugs": {
+    "url": "https://github.com/valentin-marquez/pix/issues"
+  },
+  "homepage": "https://github.com/valentin-marquez/pix#readme",
+  "type": "module",
+  "files": [
+    "addon.node",
+    "*.js",
+    "*.d.ts",
+    "README.md"
+  ],
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  }
+}

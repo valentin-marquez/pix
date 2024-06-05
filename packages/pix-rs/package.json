@@ -1,0 +1,32 @@
+{
+  "name": "pix-decode",
+  "version": "0.1.0",
+  "description": "A neon-rust program that obtains an image in buffered format and then returns it decoded with the width, height and data of the image (WIP).",
+  "main": "index.node",
+  "scripts": {
+    "build": "cargo-cp-artifact -nc index.node -- cargo build --message-format=json-render-diagnostics",
+    "build-debug": "npm run build --",
+    "build-release": "npm run build -- --release",
+    "install": "npm run build-release",
+    "test": "cargo test"
+  },
+  "author": "Valentin Marquez",
+  "license": "ISC",
+  "devDependencies": {
+    "cargo-cp-artifact": "^0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valentin-marquez/neon-webplib.git"
+  },
+  "keywords": [
+    "nose"
+  ],
+  "bugs": {
+    "url": "https://github.com/valentin-marquez/neon-webplib/issues"
+  },
+  "homepage": "https://github.com/valentin-marquez/neon-webplib#readme",
+  "dependencies": {
+    "jpeg-js": "^0.4.4"
+  }
+}
