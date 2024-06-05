@@ -1,6 +1,6 @@
 {
   "name": "@nozz/pix",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library to process images and extract dominant color and palette",
   "main": "index.cjs.js",
   "module": "index.esm.js",
