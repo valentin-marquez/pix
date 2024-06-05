@@ -11,7 +11,6 @@ export async function processImage(
   const processor = getProcessor(filePath);
   const result = processor(buffer, quality, maxColors);
 
-  // Asegúrate de que el resultado siempre tenga dominantColors
   if (!result.dominantColors) {
     result.dominantColors = [];
   }

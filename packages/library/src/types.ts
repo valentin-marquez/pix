@@ -1,7 +1,7 @@
 export interface RGB {
-  r: number; // Red component (0-255)
-  g: number; // Green component (0-255)
-  b: number; // Blue component (0-255)
+  r: number;
+  g: number;
+  b: number;
 }
 
 export interface ImageResult {
@@ -10,8 +10,8 @@ export interface ImageResult {
 }
 
 export interface Options {
-  quality?: number; // Quality of color extraction (1-100)
-  maxColors?: number; // Maximum number of colors to extract
+  quality?: number;
+  maxColors?: number;
 }
 
 export interface ImageProcessorFactory {
